@@ -1,0 +1,44 @@
+<!-- <ion-tabs>
+  <ion-tab [root]="tab1Root" tabTitle="Messages"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Channels"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="Profile"></ion-tab>
+</ion-tabs> -->
+
+<ion-content padding>
+
+<ion-tabs>
+
+    <!-- <ion-tab tab="InboxPagePage">
+        <ion-nav></ion-nav>
+      </ion-tab>
+    
+      <ion-tab tab="ChannelsPagePage">
+        <ion-nav></ion-nav>
+      </ion-tab>
+    
+      <ion-tab tab="ProfilePagePage">
+        <ion-nav></ion-nav>
+      </ion-tab> -->
+  
+    <ion-tab-bar slot="bottom">
+  
+      <ion-tab-button tab="InboxPagePage">
+        <ion-label>Messages</ion-label>
+        <ion-icon name="home"></ion-icon>
+        <ion-badge>6</ion-badge>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="ChannelsPagePage">
+        <ion-label>Channels</ion-label>
+        <ion-icon name="settings"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button tab="ProfilePagePage">
+          <ion-label>Profile</ion-label>
+          <ion-icon name="person"></ion-icon>
+        </ion-tab-button>
+  
+    </ion-tab-bar>
+  </ion-tabs>
+
+</ion-content>
