@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MESSAGE_LIST } from '../mocks/messages/messages';
-import { Message } from '../models/messages/message';
+import { Message } from '../models/messages/message.interface';
 
 @Component({
   selector: 'app-inbox-page',

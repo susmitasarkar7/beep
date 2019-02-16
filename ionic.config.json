@@ -1,5 +1,7 @@
 {
   "name": "beep",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

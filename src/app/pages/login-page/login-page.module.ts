@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, NavController } from '@ionic/angular';
 
 import { LoginPagePage } from './login-page.page';
+import { ComponentsModule } from '../../components/components.module';
 
 const routes: Routes = [
   {
@@ -19,8 +20,16 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ComponentsModule
   ],
   declarations: [LoginPagePage]
 })
-export class LoginPagePageModule {}
+export class LoginPagePageModule {
+
+  // constructor(private navCtrl: NavController) {
+  //   pageName === 'TabsPage' ? this.navCtrl.setRoot(pageName) : this.navCtrl.push(pageName);
+  // }
+
+}
+

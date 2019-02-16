@@ -11,8 +11,7 @@ export class LoginPagePage implements OnInit {
   constructor(private navCtrl: NavController) {
     
    }
-
-
+   
   ngOnInit() {
   }
 
