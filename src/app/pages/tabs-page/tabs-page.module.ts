@@ -9,9 +9,29 @@ import { TabsPagePage } from './tabs-page.page';
 
 const routes: Routes = [
   {
+    path: 'tabs',
+    component: TabsPagePage,
+    children: [
+      {
+        path: 'inbox-page',
+        loadChildren: './pages/inbox-page/inbox-page.module#InboxPagePageModule'
+      },
+      {
+        path: 'channels-page',
+        loadChildren: './pages/channels-page/channels-page.module#ChannelsPagePageModule'
+      },
+      {
+        path: 'profile-page',
+        loadChildren: './pages/profile-page/profile-page.module#ProfilePagePageModule'
+      }
+    ]
+  },
+  {
     path: '',
-    component: TabsPagePage
+    redirectTo: 'tabs/inbox-page',
+    pathMatch: 'full'
   }
+
 ];
 
 @NgModule({

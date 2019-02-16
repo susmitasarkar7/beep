@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MESSAGE_LIST } from '../mocks/messages/messages';
 
 @Component({
   selector: 'app-inbox-page',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InboxPagePage implements OnInit {
 
+  messageList = MESSAGE_LIST;
+
   constructor() { }
 
   ngOnInit() {
+    console.log(this.messageList);
   }
 
 }
