@@ -2,17 +2,17 @@
   <ion-card-content>
     <ion-item>
       <ion-label position="floating">Email Address</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input [(ngModel)]="email" type="email"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Password</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input [(ngModel)]="password" type="password"></ion-input>
     </ion-item>
   </ion-card-content>
   <ion-row class="login-form__buttons">
     <div>
     <ion-button (click)="goRegisterPage()" color="secondary">Register</ion-button>
-    <ion-button (click)="goTabsPage()">Login</ion-button>
+    <ion-button (click)="login()">Login</ion-button>
     </div>
   </ion-row>
 </ion-card>
