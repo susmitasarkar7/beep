@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+
+import { Account } from "../../pages/models/account/account.interface";
+import { LoginResponse } from "../../pages/models/login/login-response.interface";
 
 @Component({
   selector: 'app-login-form',
@@ -9,12 +12,15 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class LoginFormComponent implements OnInit {
 
-  email: string = ""
-  password: string = ""
+  account = {} as Account;
 
-  constructor(public navCtrl: NavController, private toast: ToastController, private afAuth: AngularFireAuth) { }
+  @Output() loginStatus: EventEmitter<LoginResponse>;
 
-  ngOnInit() {}
+  constructor(public navCtrl: NavController, private toast: ToastController, private afAuth: AngularFireAuth) {
+    this.loginStatus = new EventEmitter<LoginResponse>();
+  }
+
+  ngOnInit() { }
 
   goRegisterPage() {
     this.navCtrl.navigateRoot('register-page');
@@ -23,27 +29,24 @@ export class LoginFormComponent implements OnInit {
   goTabsPage() {
     this.navCtrl.navigateRoot('tabs-page');
   }
-  
 
   async login() {
-    const { email, password } = this
     try {
-      const result = await
-        this.afAuth.auth.signInWithEmailAndPassword(email , password);
-      const toast = await this.toast.create({
-        message: "Account successfully loged in.",
-        duration: 3000
-      });
-      toast.present();
-      console.log(result);
+      let res = await this.afAuth.auth.signInWithEmailAndPassword(this.account.email, this.account.password);
+      const result: LoginResponse = {
+        result: {email: res.user.email, uid: res.user.uid}
+      }
+      this.loginStatus.emit(result);
     }
     catch (e) {
       console.error(e);
-      const toast = await this.toast.create({
-        message: e.message,
-        duration: 3000
-      });
-      toast.present();
+
+      const error: LoginResponse = {
+        error: e
+      }
+
+      this.loginStatus.emit(error);
+
     }
   }
 }
